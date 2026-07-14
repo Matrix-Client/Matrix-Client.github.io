@@ -336,7 +336,7 @@
             background: linear-gradient(135deg, #0e0a1a 0%, #06040d 100%);
             border: 1px solid rgba(124, 58, 237, 0.1);
             width: 380px;
-            height: 220px;
+            height: 240px;
             border-radius: 8px;
             display: flex;
             flex-direction: column;
@@ -353,41 +353,49 @@
             box-shadow: 0 10px 25px rgba(124, 58, 237, 0.15);
         }
 
-        .server-logo-placeholder {
-            width: 70px;
-            height: 70px;
+        /* Container for server logo */
+        .server-logo-container {
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            background: rgba(124, 58, 237, 0.1);
-            border: 2px solid rgba(124, 58, 237, 0.3);
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            font-family: "Orbitron", sans-serif;
-            font-weight: 800;
-            color: #ffffff;
-            font-size: 20px;
+            margin-bottom: 15px;
+            background: rgba(124, 58, 237, 0.05);
+            border: 2px solid rgba(124, 58, 237, 0.2);
             box-shadow: 0 0 15px rgba(124, 58, 237, 0.1);
         }
 
-        /* Dynamically colored logos */
-        .pvp-club-logo { background: #1a1515; border-color: #ef4444; color: #ef4444; }
-        .pvp-land-logo { background: #1e293b; border-color: #3b82f6; color: #3b82f6; }
-        .minemen-logo { background: #110826; border-color: #a855f7; color: #a855f7; }
-        .catpvp-logo { background: #1c1917; border-color: #f59e0b; color: #f59e0b; }
-        .macesmp-logo { background: #064e3b; border-color: #10b981; color: #10b981; }
-        .pvplegacy-logo { background: #4c1d95; border-color: #c084fc; color: #c084fc; }
-        .hoplite-logo { background: #450a0a; border-color: #f87171; color: #f87171; }
+        .server-logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         .server-name {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #64748b;
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+
+        /* Glowing Bypass Badges on Cards */
+        .bypass-badge {
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #a855f7;
+            background: rgba(168, 85, 247, 0.12);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            padding: 4px 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.15);
+            font-family: "Orbitron", sans-serif;
         }
 
         @keyframes scroll {
@@ -441,21 +449,20 @@
             pointer-events: none;
         }
 
-        /* Module Icons - Custom futuristic borders */
+        /* Module Icons - Glowing visual style */
         .module-icon {
             color: #a855f7;
-            font-size: 16px;
+            font-size: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 38px;
-            height: 38px;
-            border-radius: 6px;
-            background: rgba(124, 58, 237, 0.08);
-            border: 1px solid rgba(124, 58, 237, 0.25);
-            text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
-            font-family: "Orbitron", sans-serif;
-            font-weight: 700;
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            background: rgba(168, 85, 247, 0.08);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            text-shadow: 0 0 12px rgba(168, 85, 247, 0.8);
+            box-shadow: inset 0 0 8px rgba(168, 85, 247, 0.1);
         }
 
         .module-title {
@@ -549,7 +556,7 @@
             }
             .server-card {
                 width: 300px;
-                height: 180px;
+                height: 220px;
             }
             .modules-grid {
                 grid-template-columns: 1fr;
@@ -597,73 +604,129 @@
             <div class="carousel-track">
                 
                 <div class="server-card">
-                    <div class="server-logo-placeholder pvp-club-logo">PC</div>
+                    <div class="server-logo-container">
+                        <img src="images/pvpclub.png" alt="PvP Club" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#ef4444; font-size:24px;">PC</span>
+                    </div>
                     <div class="server-name">PvP Club</div>
+                    <div class="bypass-badge">GrimAC Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder pvp-land-logo">PL</div>
+                    <div class="server-logo-container">
+                        <img src="images/pvpland.png" alt="PvP Land" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#3b82f6; font-size:24px;">PL</span>
+                    </div>
                     <div class="server-name">PvP Land</div>
+                    <div class="bypass-badge">Vulcan Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder minemen-logo">MMC</div>
+                    <div class="server-logo-container">
+                        <img src="images/minemen.png" alt="Minemen Club" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#a855f7; font-size:24px;">MMC</span>
+                    </div>
                     <div class="server-name">Minemen Club</div>
+                    <div class="bypass-badge">GrimAC Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder catpvp-logo">CP</div>
+                    <div class="server-logo-container">
+                        <img src="images/catpvp.png" alt="CatPvP" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#f59e0b; font-size:24px;">CP</span>
+                    </div>
                     <div class="server-name">CatPvP</div>
+                    <div class="bypass-badge">Karhu Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder macesmp-logo">MS</div>
+                    <div class="server-logo-container">
+                        <img src="images/macesmp.png" alt="MaceSMP" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#10b981; font-size:24px;">MS</span>
+                    </div>
                     <div class="server-name">MaceSMP</div>
+                    <div class="bypass-badge">Matrix Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder pvplegacy-logo">PL</div>
+                    <div class="server-logo-container">
+                        <img src="images/pvplegacy.png" alt="PvP Legacy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#c084fc; font-size:24px;">PL</span>
+                    </div>
                     <div class="server-name">PvP Legacy</div>
+                    <div class="bypass-badge">Verus Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder hoplite-logo">H</div>
+                    <div class="server-logo-container">
+                        <img src="images/hoplite.png" alt="Hoplite" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#f87171; font-size:24px;">H</span>
+                    </div>
                     <div class="server-name">Hoplite</div>
+                    <div class="bypass-badge">GrimAC Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder pvp-club-logo">PC</div>
+                    <div class="server-logo-container">
+                        <img src="images/pvpclub.png" alt="PvP Club" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#ef4444; font-size:24px;">PC</span>
+                    </div>
                     <div class="server-name">PvP Club</div>
+                    <div class="bypass-badge">GrimAC Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder pvp-land-logo">PL</div>
+                    <div class="server-logo-container">
+                        <img src="images/pvpland.png" alt="PvP Land" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#3b82f6; font-size:24px;">PL</span>
+                    </div>
                     <div class="server-name">PvP Land</div>
+                    <div class="bypass-badge">Vulcan Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder minemen-logo">MMC</div>
+                    <div class="server-logo-container">
+                        <img src="images/minemen.png" alt="Minemen Club" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#a855f7; font-size:24px;">MMC</span>
+                    </div>
                     <div class="server-name">Minemen Club</div>
+                    <div class="bypass-badge">GrimAC Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder catpvp-logo">CP</div>
+                    <div class="server-logo-container">
+                        <img src="images/catpvp.png" alt="CatPvP" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#f59e0b; font-size:24px;">CP</span>
+                    </div>
                     <div class="server-name">CatPvP</div>
+                    <div class="bypass-badge">Karhu Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder macesmp-logo">MS</div>
+                    <div class="server-logo-container">
+                        <img src="images/macesmp.png" alt="MaceSMP" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#10b981; font-size:24px;">MS</span>
+                    </div>
                     <div class="server-name">MaceSMP</div>
+                    <div class="bypass-badge">Matrix Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder pvplegacy-logo">PL</div>
+                    <div class="server-logo-container">
+                        <img src="images/pvplegacy.png" alt="PvP Legacy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#c084fc; font-size:24px;">PL</span>
+                    </div>
                     <div class="server-name">PvP Legacy</div>
+                    <div class="bypass-badge">Verus Bypass</div>
                 </div>
 
                 <div class="server-card">
-                    <div class="server-logo-placeholder hoplite-logo">H</div>
+                    <div class="server-logo-container">
+                        <img src="images/hoplite.png" alt="Hoplite" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <span style="display:none; font-family:'Orbitron'; font-weight:800; color:#f87171; font-size:24px;">H</span>
+                    </div>
                     <div class="server-name">Hoplite</div>
+                    <div class="bypass-badge">GrimAC Bypass</div>
                 </div>
                 
             </div>
@@ -679,115 +742,115 @@
         <div class="modules-grid">
             
             <div class="module-card">
-                <div class="module-icon">SYS</div>
+                <div class="module-icon">⚡</div>
                 <h3 class="module-title">Auto Mace</h3>
                 <p class="module-desc">Automatically hits and stun slams opponents with perfect aim assist. Features a Spear D-Tap option and many customizable settings.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">EQP</div>
+                <div class="module-icon">🛡️</div>
                 <h3 class="module-title">Auto Elytra</h3>
                 <p class="module-desc">Timely predicts and swaps between your chestplate and elytra, perfectly synced with AutoMace for seamless utility.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">WPN</div>
+                <div class="module-icon">⚔️</div>
                 <h3 class="module-title">Breach Swap</h3>
                 <p class="module-desc">Automatically swaps between your main weapon and a breach mace to land crushing hits with maximum damage output.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">MAC</div>
+                <div class="module-icon">🌀</div>
                 <h3 class="module-title">Key Wind Charge</h3>
                 <p class="module-desc">Macro to throw a wind charge instantly at your feet. Features silent rotations to avoid flagging anticheats.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">TEL</div>
+                <div class="module-icon">🔮</div>
                 <h3 class="module-title">Key Pearl</h3>
                 <p class="module-desc">Pearl away instantly at the click of a key to escape sticky situations or re-engage your fight.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">CRT</div>
+                <div class="module-icon">🏹</div>
                 <h3 class="module-title">Pearl Catch Macro</h3>
                 <p class="module-desc">Throws an ender pearl followed by a perfectly timed wind charge with configurable delay adjustments.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">TRK</div>
+                <div class="module-icon">🎯</div>
                 <h3 class="module-title">Pearl Chase</h3>
                 <p class="module-desc">Senses when an opponent throws a pearl and automatically throws yours to land right on top of them.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">INV</div>
+                <div class="module-icon">✨</div>
                 <h3 class="module-title">Auto Totem</h3>
                 <p class="module-desc">Automatically cycles and replaces totems in your offhand with highly humanized timings and simulated fumble rates.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">BOO</div>
+                <div class="module-icon">👟</div>
                 <h3 class="module-title">Lunge Macro</h3>
                 <p class="module-desc">Swaps to an item with zero cooldown, and instantly switches to your lunge spear to launch yourself forward.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">ANG</div>
+                <div class="module-icon">↩️</div>
                 <h3 class="module-title">Horizontal Pearl Catch</h3>
                 <p class="module-desc">Perfectly executes a pearl catch at any angle above a -25° pitch. Extremely high consistency rating.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">HUD</div>
+                <div class="module-icon">📈</div>
                 <h3 class="module-title">Mace Visualizer</h3>
                 <p class="module-desc">Displays clean visual indicators on your screen to show precisely where you will land and your expected damage.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">PATH</div>
+                <div class="module-icon">⭐</div>
                 <h3 class="module-title">Trajectories</h3>
                 <p class="module-desc">Draws accurate paths in the air showing exactly where your pearls, wind charges, and potions will land before launch.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">FLY</div>
+                <div class="module-icon">🌌</div>
                 <h3 class="module-title">Elytra Path</h3>
                 <p class="module-desc">Shows your predicted glide path in the air so you can maneuver and land with pixel-perfect precision.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">AIM</div>
+                <div class="module-icon">👁️</div>
                 <h3 class="module-title">Crosshair</h3>
                 <p class="module-desc">Lets you fully customize, design, and overlay your own custom crosshairs to match your aim style.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">LGT</div>
+                <div class="module-icon">💡</div>
                 <h3 class="module-title">Fullbright</h3>
                 <p class="module-desc">Maximizes client-side world brightness, stripping away shadows and dark environments entirely.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">ESP</div>
+                <div class="module-icon">🧱</div>
                 <h3 class="module-title">ESP</h3>
                 <p class="module-desc">Highlights player hitboxes and wireframes through solid objects to help you easily keep track of enemy locations.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">TXT</div>
+                <div class="module-icon">📝</div>
                 <h3 class="module-title">Custom Font</h3>
                 <p class="module-desc">Completely updates the user interface overlays and chat systems to a custom font of your choice.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">GUI</div>
+                <div class="module-icon">🛠️</div>
                 <h3 class="module-title">HUD Layout</h3>
                 <p class="module-desc">Enables a fully interactive drag-and-drop edit mode to let you scale and place HUD elements anywhere on screen.</p>
             </div>
 
             <div class="module-card">
-                <div class="module-icon">MSK</div>
+                <div class="module-icon">👤</div>
                 <h3 class="module-title">Nickname</h3>
                 <p class="module-desc">Disguises your username locally on your client so you can record or stream without revealing your identity.</p>
             </div>
