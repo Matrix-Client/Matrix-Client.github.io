@@ -14,20 +14,17 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* Explicitly setting default system cursor */
             cursor: default; 
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: #05020a;
-            /* Dark radial gradient to mimic the soft purple glow behind the text */
-            background-image: radial-gradient(circle at center, #1b0a30 0%, #05020a 70%);
+            /* Gradient glow styling */
+            background-image: radial-gradient(circle at center, #1b0a30 0%, #05020a 100%);
             color: #ffffff;
             font-family: "Montserrat", sans-serif;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             overflow-x: hidden;
         }
 
@@ -38,6 +35,13 @@
             align-items: center;
             padding: 25px 50px;
             width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(5, 2, 10, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.1);
         }
 
         .logo {
@@ -62,7 +66,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: color 0.2s ease;
-            cursor: pointer; /* Keeps standard hand cursor for links */
+            cursor: pointer;
         }
 
         nav a:hover {
@@ -94,11 +98,10 @@
             align-items: center;
             text-align: center;
             justify-content: center;
-            flex-grow: 1;
-            padding: 40px 20px;
+            height: 100vh;
+            padding: 120px 20px 40px 20px;
         }
 
-        /* Small badge at top of main title */
         .badge {
             background-color: rgba(124, 58, 237, 0.15);
             border: 1px solid rgba(124, 58, 237, 0.3);
@@ -113,10 +116,9 @@
             display: inline-block;
         }
 
-        /* Huge title with vertical purple-to-white gradient */
         .title {
             font-family: "Orbitron", sans-serif;
-            font-size: clamp(60px, 10vw, 120px); /* Responsive sizing */
+            font-size: clamp(60px, 10vw, 120px);
             font-weight: 900;
             letter-spacing: 6px;
             text-transform: uppercase;
@@ -137,7 +139,7 @@
             margin-bottom: 40px;
         }
 
-        /* --- BUTTONS --- */
+        /* --- HERO BUTTONS --- */
         .btn-container {
             display: flex;
             gap: 20px;
@@ -192,30 +194,174 @@
             border-color: rgba(255, 255, 255, 0.3);
         }
 
-        /* Bottom padding to balance layout */
-        .footer-spacer {
-            height: 100px;
+        /* --- SERVERS SECTION --- */
+        .servers-section {
+            padding: 100px 50px;
+            background: linear-gradient(to bottom, transparent, rgba(13, 5, 28, 0.5));
+            border-top: 1px solid rgba(124, 58, 237, 0.05);
         }
 
-        /* Responsive Design tweaks for mobile screens */
+        .servers-header {
+            margin-bottom: 40px;
+            padding-left: 10px;
+        }
+
+        .compat-label {
+            color: #a855f7;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .compat-label::before {
+            content: '';
+            display: inline-block;
+            width: 30px;
+            height: 2px;
+            background-color: #a855f7;
+        }
+
+        .servers-title {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .servers-title span {
+            color: #a855f7;
+            display: block;
+        }
+
+        /* --- SCROLLING TRACK & CARDS --- */
+        /* Container setting up the overflow hiding */
+        .carousel-container {
+            width: 100%;
+            overflow-x: auto; /* Fallback manual scroll for touch devices */
+            padding: 20px 0;
+            position: relative;
+        }
+
+        /* Hide default scrollbars visually */
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Continuous scrolling track animation */
+        .carousel-track {
+            display: flex;
+            gap: 24px;
+            width: max-content;
+            animation: scroll 30s linear infinite;
+        }
+
+        /* Pause auto-scroll on hover so users can click/look closely */
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* Card styles closely mirroring your screenshot design */
+        .server-card {
+            background: linear-gradient(135deg, #0e0a1a 0%, #06040d 100%);
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            width: 380px;
+            height: 220px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 20px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .server-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.15);
+        }
+
+        /* Placeholder graphic styled circles/shields representing logos */
+        .server-logo-placeholder {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(124, 58, 237, 0.1);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-family: "Orbitron", sans-serif;
+            font-weight: 800;
+            color: #ffffff;
+            font-size: 20px;
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.1);
+        }
+
+        /* Customize logo appearances dynamically to match your server styles */
+        .pvp-club-logo { background: #1a1515; border-color: #ef4444; color: #ef4444; }
+        .pvp-land-logo { background: #1e293b; border-color: #3b82f6; color: #3b82f6; }
+        .minemen-logo { background: #110826; border-color: #a855f7; color: #a855f7; }
+        .catpvp-logo { background: #1c1917; border-color: #f59e0b; color: #f59e0b; }
+        .macesmp-logo { background: #064e3b; border-color: #10b981; color: #10b981; }
+        .pvplegacy-logo { background: #4c1d95; border-color: #c084fc; color: #c084fc; }
+        .hoplite-logo { background: #450a0a; border-color: #f87171; color: #f87171; }
+
+        .server-name {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #64748b;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        /* CSS Infinite scroll loop keyframes */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                /* Shifts left by exactly half the total cloned size */
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
                 padding: 20px;
                 flex-direction: column;
                 gap: 20px;
+                position: relative;
             }
             nav {
                 gap: 20px;
             }
-            .btn-container {
-                flex-direction: column;
-                width: 100%;
-                max-width: 300px;
+            .hero {
+                height: auto;
+                padding-top: 50px;
             }
-            .btn-discord, .btn-modules {
-                width: 100%;
-                text-align: center;
-                justify-content: center;
+            .servers-section {
+                padding: 60px 20px;
+            }
+            .server-card {
+                width: 300px;
+                height: 180px;
             }
         }
     </style>
@@ -225,7 +371,7 @@
     <header>
         <div class="logo">Matrix</div>
         <nav>
-            <a href="#">Servers</a>
+            <a href="#servers">Servers</a>
             <a href="#">Modules</a>
             <a href="#">Get Client</a>
         </nav>
@@ -244,11 +390,92 @@
                 </svg>
                 Join Discord
             </a>
-            <a href="#" class="btn-modules">❯ View Modules</a>
+            <a href="#servers" class="btn-modules">❯ View Servers</a>
         </div>
     </main>
 
-    <div class="footer-spacer"></div>
+    <section id="servers" class="servers-section">
+        <div class="servers-header">
+            <div class="compat-label">Compatible</div>
+            <h2 class="servers-title">Bypasses On Every <span>Major Server</span></h2>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-track">
+                
+                <div class="server-card">
+                    <div class="server-logo-placeholder pvp-club-logo">PC</div>
+                    <div class="server-name">PvP Club</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder pvp-land-logo">PL</div>
+                    <div class="server-name">PvP Land</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder minemen-logo">MMC</div>
+                    <div class="server-name">Minemen Club</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder catpvp-logo">CP</div>
+                    <div class="server-name">CatPvP</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder macesmp-logo">MS</div>
+                    <div class="server-name">MaceSMP</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder pvplegacy-logo">PL</div>
+                    <div class="server-name">PvP Legacy</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder hoplite-logo">H</div>
+                    <div class="server-name">Hoplite</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder pvp-club-logo">PC</div>
+                    <div class="server-name">PvP Club</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder pvp-land-logo">PL</div>
+                    <div class="server-name">PvP Land</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder minemen-logo">MMC</div>
+                    <div class="server-name">Minemen Club</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder catpvp-logo">CP</div>
+                    <div class="server-name">CatPvP</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder macesmp-logo">MS</div>
+                    <div class="server-name">MaceSMP</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder pvplegacy-logo">PL</div>
+                    <div class="server-name">PvP Legacy</div>
+                </div>
+
+                <div class="server-card">
+                    <div class="server-logo-placeholder hoplite-logo">H</div>
+                    <div class="server-name">Hoplite</div>
+                </div>
+                
+                </div>
+        </div>
+    </section>
 
 </body>
 </html>
